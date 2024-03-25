@@ -1,0 +1,23 @@
+.header {
+  @apply flex items-center px-3 py-4 gap-6;
+}
+
+.info {
+  @apply flex items-center gap-2.5;
+}
+
+.circleMenu {
+  @apply hover:bg-gray-200 cursor-pointer hover:rounded-full py-1 px-1 flex items-center justify-center transition-all duration-100 ease-in;
+}
+
+.jiraInfo {
+  @apply flex items-center justify-center py-1 px-1 gap-1 hover:bg-hoverGray hover:bg-opacity-35 cursor-pointer hover:rounded-[5px] transition-all duration-100 ease-in;
+}
+
+.title {
+  @apply text-[18px] font-medium;
+}
+
+.icon {
+  @apply w-[22px] h-[22px];
+}

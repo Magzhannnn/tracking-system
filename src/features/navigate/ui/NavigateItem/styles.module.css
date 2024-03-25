@@ -1,0 +1,7 @@
+.navItem {
+  @apply flex items-center justify-start gap-[2px] py-1 px-1 hover:bg-hoverGray hover:bg-opacity-35 cursor-pointer hover:rounded-[5px] transition-all duration-100 ease-in;
+}
+
+.active {
+  @apply bg-activeNav bg-opacity-10 hover:bg-activeNav hover:bg-opacity-25 rounded-[5px] text-activeNav;
+}

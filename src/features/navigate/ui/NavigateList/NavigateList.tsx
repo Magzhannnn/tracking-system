@@ -33,6 +33,7 @@ const NavigateList = () => {
     <nav className={styles.nav}>
       {navigates.map((navigate) => (
         <NavigateItem
+          key={navigate.article}
           title={navigate.title}
           article={navigate.article}
           activeNav={activeNav}

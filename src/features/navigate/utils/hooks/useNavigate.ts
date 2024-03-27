@@ -1,16 +1,29 @@
 import { useState } from "react";
+import { defaultPopUpInfo, openPopUpWindow } from "../helpers/openPopUpWindow";
+import { IPopUpInfo } from "../../models/types";
 
 export const useNavigate = () => {
-  const [activeNav, setActiveNav] = useState(
-    localStorage.getItem("activeNav") ?? "projects"
-  );
+  const [activeNav, setActiveNav] = useState("");
+  const [popUpInfo, setPopUpInfo] = useState<IPopUpInfo>({
+    top: 0,
+    left: 0,
+    isActive: false,
+  });
 
-  const chooseNav = (title: string) => {
-    if (title === activeNav) return;
+  const chooseNav = (id = "") => {
+    console.log(id);
+    if (id === activeNav) {
+      assingValue("", defaultPopUpInfo());
+      return;
+    }
 
-    setActiveNav(title);
-    localStorage.setItem("activeNav", title);
+    assingValue(id, openPopUpWindow(id));
   };
 
-  return { activeNav, chooseNav };
+  const assingValue = (id: string, popUpInfo: IPopUpInfo) => {
+    setActiveNav(id);
+    setPopUpInfo(popUpInfo);
+  };
+
+  return { activeNav, chooseNav, popUpInfo };
 };

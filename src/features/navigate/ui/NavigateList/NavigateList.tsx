@@ -1,7 +1,8 @@
 import styles from "./styles.module.css";
-import NavigateItem from "../NavigateItem/NavigateItem";
 import { INavigate } from "../../models/types";
 import { useNavigate } from "../../utils/hooks/useNavigate";
+import NavigateItem from "../NavigateItem/NavigateItem";
+import { useCallback, useEffect } from "react";
 
 const navigates: INavigate[] = [
   {
@@ -29,6 +30,14 @@ const navigates: INavigate[] = [
 const NavigateList = () => {
   const { activeNav, chooseNav } = useNavigate();
 
+  useEffect(() => {
+    console.log(activeNav);
+  }, [activeNav]);
+
+  const handleClick = useCallback((article: string) => {
+    chooseNav(`nav_item_${article}`);
+  }, []);
+
   return (
     <nav className={styles.nav}>
       {navigates.map((navigate) => (
@@ -37,7 +46,7 @@ const NavigateList = () => {
           title={navigate.title}
           article={navigate.article}
           activeNav={activeNav}
-          chooseNav={() => chooseNav(navigate.article)}
+          chooseNav={() => handleClick(navigate.article)}
         />
       ))}
     </nav>

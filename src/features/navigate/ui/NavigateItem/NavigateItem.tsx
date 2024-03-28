@@ -12,12 +12,17 @@ interface Props {
 const NavigateItem = ({ title, article, activeNav, chooseNav }: Props) => {
   return (
     <div
-      className={`${styles.navItem} ${activeNav === article && styles.active}`}
+      id={`nav_item_${article}`}
+      className={`${styles.navItem} ${
+        activeNav === `nav_item_${article}` && styles.active
+      }`}
       onClick={chooseNav}
     >
       <span>{title}</span>
       <img
-        src={activeNav === article ? expandArrowActive : expandArrow}
+        src={
+          activeNav === `nav_item_${article}` ? expandArrowActive : expandArrow
+        }
         alt="expand-arrow"
       />
     </div>

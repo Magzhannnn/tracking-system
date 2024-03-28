@@ -1,8 +1,6 @@
-import styles from "./styles.module.css";
-import { INavigate } from "../../models/types";
-import { useNavigate } from "../../utils/hooks/useNavigate";
 import NavigateItem from "../NavigateItem/NavigateItem";
-import { useCallback, useEffect } from "react";
+import styles from "./styles.module.css";
+import { INavigate, PopUpModal, useNavigate } from "@/entities/header";
 
 const navigates: INavigate[] = [
   {
@@ -28,15 +26,7 @@ const navigates: INavigate[] = [
 ];
 
 const NavigateList = () => {
-  const { activeNav, chooseNav } = useNavigate();
-
-  useEffect(() => {
-    console.log(activeNav);
-  }, [activeNav]);
-
-  const handleClick = useCallback((article: string) => {
-    chooseNav(`nav_item_${article}`);
-  }, []);
+  const { activeNav, chooseNav, popUpInfo } = useNavigate();
 
   return (
     <nav className={styles.nav}>
@@ -46,9 +36,12 @@ const NavigateList = () => {
           title={navigate.title}
           article={navigate.article}
           activeNav={activeNav}
-          chooseNav={() => handleClick(navigate.article)}
+          chooseNav={() => chooseNav(`nav_item_${navigate.article}`)}
         />
       ))}
+      {popUpInfo.isActive && (
+        <PopUpModal top={popUpInfo.top} left={popUpInfo.left} />
+      )}
     </nav>
   );
 };

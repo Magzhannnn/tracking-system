@@ -1,5 +1,8 @@
 import { useState } from "react";
-import { defaultPopUpInfo, openPopUpWindow } from "../helpers/openPopUpWindow";
+import {
+  defaultPopUpInfo,
+  openPopUpWindow,
+} from "../../helpers/openPopUpWindow";
 import { IPopUpInfo } from "../../models/types";
 
 export const useNavigate = () => {
@@ -12,6 +15,7 @@ export const useNavigate = () => {
 
   const chooseNav = (id = "") => {
     console.log(id);
+    
     if (id === activeNav) {
       assingValue("", defaultPopUpInfo());
       return;

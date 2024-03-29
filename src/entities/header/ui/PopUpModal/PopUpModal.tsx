@@ -6,7 +6,17 @@ interface Props {
 }
 
 const PopUpModal = ({ top, left }: Props) => {
-  return <div className={styles.popUp} style={{ top, left }}></div>;
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+  };
+
+  return (
+    <div
+      className={styles.popUp}
+      style={{ top, left }}
+      onClick={handleClick}
+    ></div>
+  );
 };
 
 export default PopUpModal;

@@ -1,9 +1,12 @@
 import { Header } from "@/widgets/header";
+import { PopUpProvider } from "../providers/PopUpContext";
 
 function BaseLayout() {
   return (
     <>
-      <Header />
+      <PopUpProvider>
+        <Header />
+      </PopUpProvider>
     </>
   );
 }

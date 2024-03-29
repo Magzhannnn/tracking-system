@@ -6,17 +6,22 @@ interface Props {
   title: string;
   article: string;
   activeNav: string;
-  chooseNav: () => void;
+  openPopUp: () => void;
 }
 
-const NavigateItem = ({ title, article, activeNav, chooseNav }: Props) => {
+const NavigateItem = ({ title, article, activeNav, openPopUp }: Props) => {
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    e.stopPropagation();
+    openPopUp();
+  };
+
   return (
     <div
       id={`nav_item_${article}`}
       className={`${styles.navItem} ${
         activeNav === `nav_item_${article}` && styles.active
       }`}
-      onClick={chooseNav}
+      onClick={handleClick}
     >
       <span>{title}</span>
       <img

@@ -1,6 +1,7 @@
+import { usePopUp } from "@/app/providers/PopUpContext";
 import NavigateItem from "../NavigateItem/NavigateItem";
 import styles from "./styles.module.css";
-import { INavigate, PopUpModal, useNavigate } from "@/entities/header";
+import { INavigate, PopUpModal } from "@/entities/header";
 
 const navigates: INavigate[] = [
   {
@@ -26,7 +27,7 @@ const navigates: INavigate[] = [
 ];
 
 const NavigateList = () => {
-  const { activeNav, chooseNav, popUpInfo } = useNavigate();
+  const { activeNav, openPopUp, popUpInfo } = usePopUp();
 
   return (
     <nav className={styles.nav}>
@@ -36,7 +37,7 @@ const NavigateList = () => {
           title={navigate.title}
           article={navigate.article}
           activeNav={activeNav}
-          chooseNav={() => chooseNav(`nav_item_${navigate.article}`)}
+          openPopUp={() => openPopUp(`nav_item_${navigate.article}`)}
         />
       ))}
       {popUpInfo.isActive && (

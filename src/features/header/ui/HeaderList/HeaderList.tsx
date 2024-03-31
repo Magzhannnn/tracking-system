@@ -1,9 +1,9 @@
 import { usePopUp } from "@/app/providers/PopUpContext";
-import NavigateItem from "../NavigateItem/NavigateItem";
+import HeaderItem from "../HeaderItem/HeaderItem";
 import styles from "./styles.module.css";
-import { INavigate, PopUpModal } from "@/entities/header";
+import { IHeader, PopUpModal } from "@/entities/header";
 
-const navigates: INavigate[] = [
+const headers: IHeader[] = [
   {
     title: "Ваша работа",
     article: "works",
@@ -26,18 +26,18 @@ const navigates: INavigate[] = [
   },
 ];
 
-const NavigateList = () => {
+const HeaderList = () => {
   const { activeNav, openPopUp, popUpInfo } = usePopUp();
 
   return (
     <nav className={styles.nav}>
-      {navigates.map((navigate) => (
-        <NavigateItem
-          key={navigate.article}
-          title={navigate.title}
-          article={navigate.article}
+      {headers.map((header) => (
+        <HeaderItem
+          key={header.article}
+          title={header.title}
+          article={header.article}
           activeNav={activeNav}
-          openPopUp={() => openPopUp(`nav_item_${navigate.article}`)}
+          openPopUp={() => openPopUp(`nav_item_${header.article}`)}
         />
       ))}
       {popUpInfo.isActive && (
@@ -47,4 +47,4 @@ const NavigateList = () => {
   );
 };
 
-export default NavigateList;
+export default HeaderList;

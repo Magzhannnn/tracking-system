@@ -1,4 +1,4 @@
-import { HeaderInfo, NavigateList } from "@/features/header";
+import { HeaderInfo, HeaderList } from "@/features/header";
 import styles from "./styles.module.css";
 
 const Header = () => {
@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <HeaderInfo />
-      <NavigateList />
+      <HeaderList />
     </header>
   );
 };

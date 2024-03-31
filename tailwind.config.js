@@ -6,6 +6,8 @@ export default {
       colors: {
         hoverGray: "#CCCCCC",
         activeNav: "#0052CC",
+        textMainColor: "#344563",
+        textSecondColor: "#6B778C"
       },
     },
   },

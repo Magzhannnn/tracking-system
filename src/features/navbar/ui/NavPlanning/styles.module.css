@@ -1,0 +1,7 @@
+.nav_planning {
+    @apply px-2 pt-7;
+}
+
+.title {
+    @apply text-[12px] pl-2 uppercase font-bold
+}

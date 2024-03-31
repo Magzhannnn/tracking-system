@@ -1,4 +1,4 @@
 import HeaderInfo from "./ui/HeaderInfo/HeaderInfo";
-import NavigateList from "./ui/NavigateList/NavigateList";
+import HeaderList from "./ui/HeaderList/HeaderList";
 
-export { HeaderInfo, NavigateList };
+export { HeaderInfo, HeaderList };

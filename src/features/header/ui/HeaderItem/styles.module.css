@@ -1,4 +1,4 @@
-.navItem {
+.headItem {
   @apply flex items-center justify-start gap-[2px] py-1 px-1 hover:bg-hoverGray hover:bg-opacity-35 cursor-pointer hover:rounded-[5px] transition-all duration-100 ease-in;
 }
 

@@ -1,4 +1,4 @@
-export interface INavigate {
+export interface IHeader {
   title: string;
   article: string;
 }

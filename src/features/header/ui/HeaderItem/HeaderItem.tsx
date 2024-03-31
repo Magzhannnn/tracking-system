@@ -9,7 +9,7 @@ interface Props {
   openPopUp: () => void;
 }
 
-const NavigateItem = ({ title, article, activeNav, openPopUp }: Props) => {
+const HeaderItem = ({ title, article, activeNav, openPopUp }: Props) => {
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     openPopUp();
@@ -18,7 +18,7 @@ const NavigateItem = ({ title, article, activeNav, openPopUp }: Props) => {
   return (
     <div
       id={`nav_item_${article}`}
-      className={`${styles.navItem} ${
+      className={`${styles.headItem} ${
         activeNav === `nav_item_${article}` && styles.active
       }`}
       onClick={handleClick}
@@ -34,4 +34,4 @@ const NavigateItem = ({ title, article, activeNav, openPopUp }: Props) => {
   );
 };
 
-export default NavigateItem;
+export default HeaderItem;

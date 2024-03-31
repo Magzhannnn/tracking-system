@@ -1,0 +1,15 @@
+.wrap {
+  @apply flex items-center justify-center gap-2.5 px-3;
+}
+
+.img {
+  @apply rounded-[2px] w-[24px] h-[24px];
+}
+
+.title {
+    @apply font-semibold text-[14px]
+}
+
+.text {
+    @apply text-[12px] text-textSecondColor
+}

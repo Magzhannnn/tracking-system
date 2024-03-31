@@ -1,5 +1,5 @@
 import PopUpModal from "./ui/PopUpModal/PopUpModal";
-import { INavigate } from "./models/types";
+import { IHeader } from "./models/types";
 
-export type { INavigate };
+export type { IHeader };
 export { PopUpModal };

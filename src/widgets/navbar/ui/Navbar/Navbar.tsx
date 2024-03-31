@@ -1,9 +1,14 @@
-import styles from "./styles.module.css"
+import { NavInfo } from "@/entities/navbar/index";
+import { NavPlanning } from "@/features/navbar/index";
+import styles from "./styles.module.css";
 
 const Navbar = () => {
   return (
-    <nav>Navbar</nav>
-  )
-}
+    <nav className={styles.nav}>
+      <NavInfo />
+      <NavPlanning title="Планирование" />
+    </nav>
+  );
+};
 
-export default Navbar
+export default Navbar;

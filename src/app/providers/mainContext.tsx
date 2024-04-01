@@ -7,14 +7,16 @@ import { createContext, useContext, useState } from "react";
 
 export interface IPopUpContext {
   activeNav: string;
+  activeHeader: string;
   popUpInfo: IPopUpInfo;
+  chooseNav: (nav: string) => void;
   openPopUp: (id: string) => void;
 }
 
-export const PopUpContext = createContext<IPopUpContext | undefined>(undefined);
+export const mainContext = createContext<IPopUpContext | undefined>(undefined);
 
-export const usePopUp = () => {
-  const context = useContext(PopUpContext);
+export const useMainContext = () => {
+  const context = useContext(mainContext);
 
   if (!context) {
     throw new Error("context error");
@@ -27,16 +29,26 @@ interface ProviderProps {
   children: React.ReactNode;
 }
 
-export const PopUpProvider = ({ children }: ProviderProps) => {
-  const [activeNav, setActiveNav] = useState("");
+export const MainProvider = ({ children }: ProviderProps) => {
+  const [activeHeader, setActiveHeader] = useState("");
+
+  const [activeNav, setActiveNav] = useState(
+    localStorage.getItem("activeNav") ?? "timeLine"
+  );
+
   const [popUpInfo, setPopUpInfo] = useState<IPopUpInfo>({
     top: 0,
     left: 0,
     isActive: false,
   });
 
+  const chooseNav = (nav: string) => {
+    setActiveNav(nav);
+    localStorage.setItem("activeNav", nav);
+  };
+
   const openPopUp = (id = "") => {
-    if (id === activeNav) {
+    if (id === activeHeader) {
       assingValue("", defaultPopUpInfo());
       return;
     }
@@ -45,17 +57,25 @@ export const PopUpProvider = ({ children }: ProviderProps) => {
   };
 
   const assingValue = (id: string, popUpInfo: IPopUpInfo) => {
-    setActiveNav(id);
+    setActiveHeader(id);
     setPopUpInfo(popUpInfo);
   };
 
   window.addEventListener("click", () => {
-    assingValue("", defaultPopUpInfo());
+    if (activeHeader.length > 0) assingValue("", defaultPopUpInfo());
   });
 
   return (
-    <PopUpContext.Provider value={{ activeNav, popUpInfo, openPopUp }}>
+    <mainContext.Provider
+      value={{
+        activeHeader,
+        popUpInfo,
+        openPopUp,
+        activeNav,
+        chooseNav,
+      }}
+    >
       {children}
-    </PopUpContext.Provider>
+    </mainContext.Provider>
   );
 };

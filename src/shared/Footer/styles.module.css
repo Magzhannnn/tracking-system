@@ -1,0 +1,11 @@
+.footer {
+  @apply text-[12px] fixed bottom-6 left-3 flex flex-col gap-2 items-center justify-center;
+}
+
+.title {
+  @apply text-textSecondColor;
+}
+
+.text {
+  @apply font-medium hover:underline cursor-pointer;
+}

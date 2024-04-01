@@ -1,8 +1,10 @@
+import { memo } from "react";
+
 interface Props {
-  isActive: boolean;
+  isActive?: boolean;
 }
 
-const GoalsSvg = ({ isActive }: Props) => {
+const GoalsSvg = memo(({ isActive }: Props) => {
   return (
     <svg
       role="presentation"
@@ -19,6 +21,6 @@ const GoalsSvg = ({ isActive }: Props) => {
       </g>
     </svg>
   );
-};
+});
 
 export default GoalsSvg;

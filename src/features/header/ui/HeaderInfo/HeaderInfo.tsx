@@ -1,11 +1,11 @@
-import { usePopUp } from "@/app/providers/PopUpContext";
+import { useMainContext } from "@/app/providers/mainContext";
 import circleMenu from "../../assets/circle-menu.png";
 import activeCircleMenu from "../../assets/active-circle-menu.png";
 import jiraIcon from "../../assets/jira-icon.png";
 import styles from "./styles.module.css";
 
 const HeaderInfo = () => {
-  const { activeNav, openPopUp } = usePopUp();
+  const { activeHeader, openPopUp } = useMainContext();
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
@@ -17,14 +17,14 @@ const HeaderInfo = () => {
       <div className={styles.info}>
         <div
           className={`${styles.circleMenu} ${
-            activeNav === "header_icon" && styles.active
+            activeHeader === "header_icon" && styles.active
           }`}
           id="header_icon"
           onClick={handleClick}
         >
           <img
             className={styles.icon}
-            src={activeNav === "header_icon" ? activeCircleMenu : circleMenu}
+            src={activeHeader === "header_icon" ? activeCircleMenu : circleMenu}
             alt="circled-menu"
           />
         </div>

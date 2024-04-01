@@ -5,11 +5,11 @@ import styles from "./styles.module.css";
 interface Props {
   title: string;
   article: string;
-  activeNav: string;
+  activeHeader: string;
   openPopUp: () => void;
 }
 
-const HeaderItem = ({ title, article, activeNav, openPopUp }: Props) => {
+const HeaderItem = ({ title, article, activeHeader, openPopUp }: Props) => {
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     openPopUp();
@@ -19,14 +19,16 @@ const HeaderItem = ({ title, article, activeNav, openPopUp }: Props) => {
     <div
       id={`nav_item_${article}`}
       className={`${styles.headItem} ${
-        activeNav === `nav_item_${article}` && styles.active
+        activeHeader === `nav_item_${article}` && styles.active
       }`}
       onClick={handleClick}
     >
       <span>{title}</span>
       <img
         src={
-          activeNav === `nav_item_${article}` ? expandArrowActive : expandArrow
+          activeHeader === `nav_item_${article}`
+            ? expandArrowActive
+            : expandArrow
         }
         alt="expand-arrow"
       />

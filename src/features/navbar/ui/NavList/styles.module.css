@@ -1,11 +1,3 @@
-.nav_planning {
-  @apply pt-7;
-}
-
-.title {
-  @apply text-[12px] uppercase font-bold flex items-center gap-[2px];
-}
-
 .nav_list {
   @apply px-[6px];
 }

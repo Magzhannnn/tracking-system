@@ -1,16 +1,16 @@
 import { Header } from "@/widgets/header";
-import { PopUpProvider } from "../providers/PopUpContext";
+import { MainProvider } from "../providers/mainContext";
 import { Navbar } from "@/widgets/navbar";
 
 function BaseLayout() {
   return (
     <>
-      <PopUpProvider>
+      <MainProvider>
         <Header />
         <div className="flex">
           <Navbar />
         </div>
-      </PopUpProvider>
+      </MainProvider>
     </>
   );
 }

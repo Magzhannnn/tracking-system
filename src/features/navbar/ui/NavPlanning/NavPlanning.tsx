@@ -1,8 +1,10 @@
-import { NavPlanningItem } from "@/entities/navbar/index";
+import { INavItem } from "@/entities/navbar/index";
+import { Arrow } from "@/shared/Arrow/Arrow";
 import { useNavigate } from "../../utils/hooks/useNavigate";
+import NavList from "../NavList/NavList";
 import styles from "./styles.module.css";
 
-const navPlanning = [
+const navPlanning: INavItem[] = [
   { image: "timeLine", text: "Хронология" },
   { image: "backLog", text: "Бэклог" },
   { image: "table", text: "Доска" },
@@ -10,25 +12,21 @@ const navPlanning = [
   { image: "tasks", text: "Задачи" },
 ];
 
+
 interface Props {
   title: string;
 }
 
 const NavPlanning = ({ title }: Props) => {
-  const { activeNav, chooseNav } = useNavigate();
+  const { isShow, showNavClick } = useNavigate();
 
   return (
     <div className={styles.nav_planning}>
-      <p className={styles.title}>{title}</p>
-      {navPlanning.map((item) => (
-        <NavPlanningItem
-          key={item.text}
-          img={item.image}
-          text={item.text}
-          activeNav={activeNav}
-          chooseNav={() => chooseNav(item.image)}
-        />
-      ))}
+      <p className={styles.title}>
+        <Arrow isShow={isShow} showClick={showNavClick} />
+        <span>{title}</span>
+      </p>
+      {isShow && <NavList navList={navPlanning} />}
     </div>
   );
 };

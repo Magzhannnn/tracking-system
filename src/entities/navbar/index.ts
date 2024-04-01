@@ -1,4 +1,5 @@
 import NavInfo from "./ui/NavInfo/NavInfo";
-import NavPlanningItem from "./ui/NavPlanningItem/NavPlanningItem";
+import NavItem from "./ui/NavItem/NavItem";
+import type { INavItem } from "./models/types";
 
-export { NavInfo, NavPlanningItem };
+export { NavInfo, NavItem, INavItem };

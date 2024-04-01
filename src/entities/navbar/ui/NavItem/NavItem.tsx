@@ -4,6 +4,7 @@ import BackLogSvg from "./svgComponents/BackLogSvg";
 import TableSvg from "./svgComponents/TableSvg";
 import GoalsSvg from "./svgComponents/GoalsSvg";
 import TasksSvg from "./svgComponents/TasksSvg";
+import { memo } from "react";
 
 const objImg = {
   timeLine: (isActive: boolean) => <TimeLineSvg isActive={isActive} />,
@@ -17,20 +18,28 @@ interface Props {
   img: string;
   text: string;
   activeNav: string;
-  chooseNav: () => void;
+  chooseNav: (img: string) => void;
 }
 
-const NavPlanningItem = ({ img, text, activeNav, chooseNav }: Props) => {
+const NavItem = memo(({ img, text, activeNav, chooseNav }: Props) => {
+  console.log("item");
+
   return (
     <div
       className={`${styles.nav_item} ${activeNav === img && styles.active}`}
-      onClick={chooseNav}
+      onClick={() => chooseNav(img)}
     >
       {objImg[img](activeNav === img)}
 
-      <p className={`${styles.nav_item_text} ${activeNav === img && styles.active_text}`}>{text}</p>
+      <p
+        className={`${styles.nav_item_text} ${
+          activeNav === img && styles.active_text
+        }`}
+      >
+        {text}
+      </p>
     </div>
   );
-};
+});
 
-export default NavPlanningItem;
+export default NavItem;

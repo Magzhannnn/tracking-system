@@ -1,6 +1,9 @@
 import { useState } from "react";
 
 export const useNavigate = () => {
+  const [isShow, setIsShow] = useState(
+    JSON.parse(localStorage.getItem("isShow") ?? "true")
+  );
   const [activeNav, setActiveNav] = useState(
     localStorage.getItem("activeNav") ?? "timeLine"
   );
@@ -10,5 +13,10 @@ export const useNavigate = () => {
     localStorage.setItem("activeNav", nav);
   };
 
-  return { activeNav, chooseNav };
+  const showNavClick = () => {
+    localStorage.setItem("isShow", JSON.stringify(!isShow));
+    setIsShow(!isShow);
+  };
+
+  return { isShow, activeNav, chooseNav, showNavClick };
 };

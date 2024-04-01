@@ -1,3 +1,3 @@
-import NavPlanning from "./ui/NavPlanning/NavPlanning";
+import NavBlock from "./ui/NavBlock/NavBlock";
 
-export { NavPlanning };
+export { NavBlock };

@@ -1,8 +1,10 @@
+import { memo } from "react";
+
 interface Props {
-  isActive: boolean;
+  isActive?: boolean;
 }
 
-const BackLogSvg = ({ isActive }: Props) => {
+const BackLogSvg = memo(({ isActive }: Props) => {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" role="presentation">
       <g fill={isActive ? "#0052CC" : "#344563"}>
@@ -13,6 +15,6 @@ const BackLogSvg = ({ isActive }: Props) => {
       </g>
     </svg>
   );
-};
+});
 
 export default BackLogSvg;

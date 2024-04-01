@@ -1,4 +1,4 @@
-import { usePopUp } from "@/app/providers/PopUpContext";
+import { useMainContext } from "@/app/providers/mainContext";
 import HeaderItem from "../HeaderItem/HeaderItem";
 import styles from "./styles.module.css";
 import { IHeader, PopUpModal } from "@/entities/header";
@@ -27,7 +27,7 @@ const headers: IHeader[] = [
 ];
 
 const HeaderList = () => {
-  const { activeNav, openPopUp, popUpInfo } = usePopUp();
+  const { activeHeader, openPopUp, popUpInfo } = useMainContext();
 
   return (
     <nav className={styles.nav}>
@@ -36,7 +36,7 @@ const HeaderList = () => {
           key={header.article}
           title={header.title}
           article={header.article}
-          activeNav={activeNav}
+          activeHeader={activeHeader}
           openPopUp={() => openPopUp(`nav_item_${header.article}`)}
         />
       ))}

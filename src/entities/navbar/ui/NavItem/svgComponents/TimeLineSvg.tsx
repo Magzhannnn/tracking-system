@@ -1,8 +1,10 @@
+import { memo } from "react";
+
 interface Props {
-  isActive: boolean;
+  isActive?: boolean;
 }
 
-const TimeLineSvg = ({ isActive }: Props) => {
+const TimeLineSvg = memo(({ isActive }: Props) => {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24">
       <path
@@ -11,6 +13,6 @@ const TimeLineSvg = ({ isActive }: Props) => {
       ></path>
     </svg>
   );
-};
+});
 
 export default TimeLineSvg;

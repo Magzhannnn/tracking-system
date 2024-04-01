@@ -1,3 +1,11 @@
 .header {
-  @apply flex items-center px-3 py-2 gap-6 border-hoverGray border-opacity-30 border-b;
+  @apply flex items-center justify-between px-3 py-2 border-hoverGray border-opacity-30 border-b;
+}
+
+.left {
+  @apply flex items-center gap-6;
+}
+
+.right {
+  
 }

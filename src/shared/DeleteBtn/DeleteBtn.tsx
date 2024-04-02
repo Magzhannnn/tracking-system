@@ -1,7 +1,7 @@
 import styles from "./styles.module.css";
 
 interface Props {
-  onDelete: () => void;
+  onDelete: (e: React.MouseEvent<HTMLOrSVGElement>) => void;
 }
 
 const DeleteBtn = ({ onDelete }: Props) => {

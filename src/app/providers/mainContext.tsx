@@ -9,8 +9,10 @@ export interface IPopUpContext {
   activeNav: string;
   activeHeader: string;
   popUpInfo: IPopUpInfo;
+  isSelectHeaderInput: boolean;
   chooseNav: (nav: string) => void;
   openPopUp: (id: string) => void;
+  onSelectHeaderInput: () => void;     
 }
 
 export const mainContext = createContext<IPopUpContext | undefined>(undefined);
@@ -69,7 +71,8 @@ export const MainProvider = ({ children }: ProviderProps) => {
   };
 
   window.addEventListener("click", () => {
-    if (activeHeader.length > 0 || isSelectHeaderInput) assingValue("", defaultPopUpInfo(), false);
+    if (activeHeader.length > 0 || isSelectHeaderInput)
+      assingValue("", defaultPopUpInfo(), false);
   });
 
   const onSelectHeaderInput = () => {

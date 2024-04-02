@@ -1,3 +1,4 @@
+import { memo } from "react";
 import styles from "./styles.module.css";
 
 interface Props {
@@ -5,16 +6,14 @@ interface Props {
   text: string;
   activeNav: string;
   children: React.ReactNode;
-  chooseNav: () => void;
+  chooseNav: (img: string) => void;
 }
 
-const NavItem = ({ img, text, activeNav, chooseNav, children }: Props) => {
-  console.log("item");
-
+const NavItem = memo(({ img, text, activeNav, chooseNav, children }: Props) => {
   return (
     <div
       className={`${styles.nav_item} ${activeNav === img && styles.active}`}
-      onClick={chooseNav}
+      onClick={() => chooseNav(img)}
     >
       {children}
 
@@ -27,6 +26,6 @@ const NavItem = ({ img, text, activeNav, chooseNav, children }: Props) => {
       </p>
     </div>
   );
-};
+});
 
 export default NavItem;

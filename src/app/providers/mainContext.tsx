@@ -30,6 +30,8 @@ interface ProviderProps {
 }
 
 export const MainProvider = ({ children }: ProviderProps) => {
+  const [isSelectHeaderInput, setIsSelectHeaderInput] = useState(false);
+
   const [activeHeader, setActiveHeader] = useState("");
 
   const [activeNav, setActiveNav] = useState(
@@ -49,21 +51,30 @@ export const MainProvider = ({ children }: ProviderProps) => {
 
   const openPopUp = (id = "") => {
     if (id === activeHeader) {
-      assingValue("", defaultPopUpInfo());
+      assingValue("", defaultPopUpInfo(), false);
       return;
     }
 
-    assingValue(id, openPopUpWindow(id));
+    assingValue(id, openPopUpWindow(id), false);
   };
 
-  const assingValue = (id: string, popUpInfo: IPopUpInfo) => {
+  const assingValue = (
+    id: string,
+    popUpInfo: IPopUpInfo,
+    isSelectInput: boolean
+  ) => {
     setActiveHeader(id);
     setPopUpInfo(popUpInfo);
+    setIsSelectHeaderInput(isSelectInput);
   };
 
   window.addEventListener("click", () => {
-    if (activeHeader.length > 0) assingValue("", defaultPopUpInfo());
+    if (activeHeader.length > 0 || isSelectHeaderInput) assingValue("", defaultPopUpInfo(), false);
   });
+
+  const onSelectHeaderInput = () => {
+    assingValue("", defaultPopUpInfo(), true);
+  };
 
   return (
     <mainContext.Provider
@@ -73,6 +84,8 @@ export const MainProvider = ({ children }: ProviderProps) => {
         openPopUp,
         activeNav,
         chooseNav,
+        isSelectHeaderInput,
+        onSelectHeaderInput,
       }}
     >
       {children}

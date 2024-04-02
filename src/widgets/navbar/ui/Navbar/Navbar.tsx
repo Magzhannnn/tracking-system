@@ -33,7 +33,7 @@ const Navbar = () => {
       <NavInfo />
       <div className={styles.nav_blocks}>
         {allNavBlock.map((navBlock) => (
-          <NavBlock title={navBlock.title} navItems={navBlock.navItems} />
+          <NavBlock key={navBlock.title} title={navBlock.title} navItems={navBlock.navItems} />
         ))}
       </div>
       <NavList navList={navFooterItmes} />

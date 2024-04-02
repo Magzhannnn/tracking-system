@@ -1,0 +1,15 @@
+.right {
+  @apply fixed right-10 z-[120] bg-white cursor-text flex items-center justify-start gap-1 w-[200px] px-2 h-[32px] border border-textSecondColor border-opacity-45 rounded;
+}
+
+.selected_block {
+  @apply w-[732px] border-2 border-opacity-65 border-activeNav;
+}
+
+.input {
+  @apply outline-none w-full h-full text-textSecondColor;
+}
+
+.selected_input {
+  @apply text-textMainColor placeholder:text-textMainColor;
+}

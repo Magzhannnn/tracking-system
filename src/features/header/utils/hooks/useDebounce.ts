@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+
 export const useDebounce = () => {
   const [inputText, setInputText] = useState("");
   const [debounceText, setDebounceText] = useState("");
@@ -14,5 +15,5 @@ export const useDebounce = () => {
     };
   }, [inputText]);
 
-  return { debounceText, setInputText };
+  return { inputText, debounceText, setInputText };
 };

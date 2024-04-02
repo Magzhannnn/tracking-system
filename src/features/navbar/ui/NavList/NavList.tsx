@@ -1,3 +1,6 @@
+import React, { useCallback, useMemo } from "react";
+import styles from "./styles.module.css";
+import { useMainContext } from "@/app/providers/mainContext";
 import {
   BackLogSvg,
   CodeSvg,
@@ -7,9 +10,7 @@ import {
   TableSvg,
   TasksSvg,
   TimeLineSvg,
-} from "@/entities/navbar/index";
-import styles from "./styles.module.css";
-import { useMainContext } from "@/app/providers/mainContext";
+} from "@/entities/navbar";
 import PageProjectSvg from "@/entities/navbar/ui/NavItem/svgComponents/PageProjectSvg";
 import AddUrlSvg from "@/entities/navbar/ui/NavItem/svgComponents/AddUrlSvg";
 import SettingProjectSvg from "@/entities/navbar/ui/NavItem/svgComponents/SettingProjectSvg";
@@ -33,6 +34,12 @@ interface Props {
 const NavList = ({ navList }: Props) => {
   const { activeNav, chooseNav } = useMainContext();
 
+  const activeNavMemo = useMemo(() => activeNav, [activeNav]);
+
+  const handleClick = useCallback((img: string) => {
+    chooseNav(img);
+  }, []);
+
   return (
     <div className={styles.nav_list}>
       {navList.map((item, idx) => (
@@ -40,8 +47,8 @@ const NavList = ({ navList }: Props) => {
           key={`${item.text}_${idx}`}
           img={item.image}
           text={item.text}
-          activeNav={activeNav}
-          chooseNav={() => chooseNav(item.image)}
+          activeNav={activeNavMemo}
+          chooseNav={handleClick}
         >
           {objImg[item.image](activeNav === item.image)}
         </NavItem>

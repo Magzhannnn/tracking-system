@@ -1,5 +1,5 @@
 .nav {
-  @apply pt-6 px-1 h-screen border-r-[3px] border-gray-100 fixed top-[53px] left-0;
+  @apply pt-6 px-1 h-screen border-r-[3px] border-gray-100;
 }
 
 .nav_blocks {

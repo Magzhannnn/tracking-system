@@ -10,7 +10,7 @@ interface Props {
 }
 
 const HeaderItem = ({ title, article, activeHeader, openPopUp }: Props) => {
-  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
     openPopUp();
   };

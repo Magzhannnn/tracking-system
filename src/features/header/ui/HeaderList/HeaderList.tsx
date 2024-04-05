@@ -2,6 +2,7 @@ import { useMainContext } from "@/app/providers/mainContext";
 import HeaderItem from "../HeaderItem/HeaderItem";
 import styles from "./styles.module.css";
 import { IHeader, PopUpModal } from "@/entities/header";
+import { memo } from "react";
 
 const headers: IHeader[] = [
   {
@@ -26,7 +27,7 @@ const headers: IHeader[] = [
   },
 ];
 
-const HeaderList = () => {
+const HeaderList = memo(() => {
   const { activeHeader, openPopUp, popUpInfo } = useMainContext();
 
   return (
@@ -41,10 +42,14 @@ const HeaderList = () => {
         />
       ))}
       {popUpInfo.isActive && (
-        <PopUpModal top={popUpInfo.top} left={popUpInfo.left} />
+        <PopUpModal
+          activeHeader={activeHeader}
+          top={popUpInfo.top}
+          left={popUpInfo.left}
+        />
       )}
     </nav>
   );
-};
+});
 
 export default HeaderList;

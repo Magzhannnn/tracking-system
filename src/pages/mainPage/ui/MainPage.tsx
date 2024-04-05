@@ -1,5 +1,13 @@
+import { Navbar } from "@/widgets/navbar";
+import styles from "./styles.module.css";
+
 const MainPage = () => {
-  return <div>MainPage</div>;
+  return (
+    <>
+      <Navbar />
+      <div>Hello World</div>
+    </>
+  );
 };
 
 export default MainPage;

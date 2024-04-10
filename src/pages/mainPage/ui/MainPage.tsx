@@ -1,5 +1,4 @@
 import { Navbar } from "@/widgets/navbar";
-import styles from "./styles.module.css";
 
 const MainPage = () => {
   return (

@@ -1,4 +1,3 @@
-import styles from "./styles.module.css";
 
 interface Props {
   onDelete: (e: React.MouseEvent<HTMLOrSVGElement>) => void;

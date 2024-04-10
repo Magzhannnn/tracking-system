@@ -1,10 +1,9 @@
-import { HeaderInfo, HeaderList } from "@/features/header";
-import HeaderInput from "@/features/header/ui/HeaderInput/HeaderInput";
+import { HeaderInfo, HeaderInput, HeaderList } from "@/features/header";
 import styles from "./styles.module.css";
 import { useEffect, useState } from "react";
 
 const Header = () => {
-  const [currentUrl, setCurrentUrl] = useState(window.location.pathname);
+  const [_, setCurrentUrl] = useState(window.location.pathname);
 
   useEffect(() => {
     const handleUrlChange = () => {
